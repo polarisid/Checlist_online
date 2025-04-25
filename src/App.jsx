@@ -8,6 +8,10 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 2rem;
   font-family: 'Segoe UI', sans-serif;
+
+  @media (max-width: 600px) {
+    padding: 1rem;
+  }
 `;
 
 const Title = styled.h1`
@@ -23,49 +27,69 @@ const Footer = styled.footer`
   text-align: center;
   font-size: 0.875rem;
   color: #64748b;
+
+  @media (max-width: 600px) {
+    font-size: 0.8rem;
+  }
 `;
+
+
 
 const Input = styled.input`
   width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 0.75rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 1rem;
-`;
-
-const Select = styled.select`
-  width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 0.75rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 1rem;
-`;
-
-const Textarea = styled.textarea`
-  width: 100%;
-  padding: 0.75rem;
+  padding: 0.8rem;
   margin-bottom: 1rem;
   border: 1px solid #cbd5e1;
   border-radius: 8px;
   font-size: 1rem;
+
+  @media (max-width: 600px) {
+    font-size: 1rem;
+  }
+`;
+
+const Select = styled.select`
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+
+  @media (max-width: 600px) {
+    font-size: 1rem;
+  }
+`;
+
+const Textarea = styled.textarea`
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+
+  @media (max-width: 600px) {
+    font-size: 1rem;
+  }
 `;
 
 const Button = styled.button`
   background-color: #3b82f6;
   color: white;
-  padding: 0.75rem 1.5rem;
+  padding: 0.8rem 1.5rem;
   font-size: 1rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  width: 100%;
   transition: background 0.3s;
 
   &:hover {
     background-color: #2563eb;
   }
 `;
+
 
 function App() {
   const [formData, setFormData] = useState({
