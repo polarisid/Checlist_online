@@ -3,6 +3,9 @@ import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import { saveAs } from 'file-saver';
 import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
+import SignatureCanvas from 'react-signature-canvas';
+import { useRef } from 'react';
+
 const Container = styled.div`
   max-width: 480px;
   margin: 0 auto;
@@ -110,6 +113,7 @@ function App() {
     observacoes: '',
     tecnico: ''
   });
+  const sigCanvas = useRef(null);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -126,6 +130,21 @@ function App() {
     const page = pdfDoc.getPages()[0];
     const { width, height } = page.getSize();
     const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+
+
+
+      const assinaturaDataUrl = sigCanvas.current.getCanvas().toDataURL('image/png');
+      const pngImage = await pdfDoc.embedPng(assinaturaDataUrl);
+      page.drawImage(pngImage, {
+        x: 390, // ajuste conforme posição no PDF
+        y: height - 820,
+        width: 150,
+        height: 40
+      });
+    
+
+
+
 
     const drawText = (text, x, y, size = 10) => {
       page.drawText(text, {
@@ -153,8 +172,8 @@ function App() {
 
     const pdfBytes = await pdfDoc.save();
     const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-    saveAs(blob, `Checklist_${formData.tipoChecklist}.pdf`);
-  };
+    const nomeArquivo = formData.numeroOS?.trim() || 'Checklist';
+    saveAs(blob, `${nomeArquivo}.pdf`);  };
 
   return (
     <>
@@ -176,6 +195,19 @@ function App() {
       <Input name="dataVisita" placeholder="Data da Visita" onChange={handleChange} />
       <Input name="tecnico" placeholder="Técnico" onChange={handleChange} />
       <Textarea name="observacoes" placeholder="Observações" rows="4" onChange={handleChange} />
+
+      <div style={{ border: '1px solid #ccc', borderRadius: '8px', marginBottom: '1rem' }}>
+  <p style={{ margin: '0.5rem 0' }}>Assinatura do Cliente:</p>
+  <SignatureCanvas
+  penColor="black"
+  canvasProps={{ width: 400, height: 100, className: 'sigCanvas' }}
+  ref={sigCanvas}
+/>
+
+  <button type="button" onClick={() => sigCanvas.current.clear()} style={{ marginTop: '0.5rem' }}>
+    Limpar
+  </button>
+</div>
 
       <Button onClick={preencherPDF}>Gerar PDF</Button>
       <Footer>
