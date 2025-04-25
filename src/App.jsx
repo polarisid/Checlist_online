@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import { saveAs } from 'file-saver';
 import styled from 'styled-components';
-
+import { createGlobalStyle } from 'styled-components';
 const Container = styled.div`
-
   max-width: 480px;
   margin: 0 auto;
   padding: 1.5rem 1rem;
+  box-sizing: border-box;
   font-family: 'Segoe UI', sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
 `;
 
 const Title = styled.h1`
@@ -81,6 +82,20 @@ const Footer = styled.footer`
 `;
 
 
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+`;
+
+
+
 function App() {
   const [formData, setFormData] = useState({
     cliente: '',
@@ -142,6 +157,9 @@ function App() {
   };
 
   return (
+    <>
+
+      <GlobalStyle />
     <Container>
       <Title>Preencher Checklist</Title>
 
@@ -164,7 +182,7 @@ function App() {
   Desenvolvido por <strong>Daniel Carvalho</strong>
 </Footer>
     </Container>
-    
+    </>
   );
 }
 
