@@ -4,90 +4,80 @@ import { saveAs } from 'file-saver';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-family: 'Segoe UI', sans-serif;
 
-  @media (max-width: 600px) {
-    padding: 1rem;
-  }
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 `;
 
 const Title = styled.h1`
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  color: #1e293b;
-`;
-const Footer = styled.footer`
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid #e2e8f0;
+  color: #1f2937;
   text-align: center;
-  font-size: 0.875rem;
-  color: #64748b;
-
-  @media (max-width: 600px) {
-    font-size: 0.8rem;
-  }
 `;
-
-
 
 const Input = styled.input`
   width: 100%;
-  padding: 0.8rem;
+  padding: 1rem;
   margin-bottom: 1rem;
   border: 1px solid #cbd5e1;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 1rem;
-
-  @media (max-width: 600px) {
-    font-size: 1rem;
-  }
+  background: #f9fafb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 `;
 
 const Select = styled.select`
   width: 100%;
-  padding: 0.8rem;
+  padding: 1rem;
   margin-bottom: 1rem;
   border: 1px solid #cbd5e1;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 1rem;
-
-  @media (max-width: 600px) {
-    font-size: 1rem;
-  }
+  background: #f9fafb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 `;
 
 const Textarea = styled.textarea`
   width: 100%;
-  padding: 0.8rem;
+  padding: 1rem;
   margin-bottom: 1rem;
   border: 1px solid #cbd5e1;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 1rem;
-
-  @media (max-width: 600px) {
-    font-size: 1rem;
-  }
+  background: #f9fafb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 `;
 
 const Button = styled.button`
   background-color: #3b82f6;
   color: white;
-  padding: 0.8rem 1.5rem;
+  padding: 1rem;
   font-size: 1rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
   width: 100%;
   transition: background 0.3s;
+  margin-top: 0.5rem;
 
   &:hover {
     background-color: #2563eb;
   }
+`;
+
+const Footer = styled.footer`
+  margin-top: auto;
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #9ca3af;
 `;
 
 
